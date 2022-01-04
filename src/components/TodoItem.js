@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import './TodoItem.css'
 
 class TodoItem extends Component {
+    /* 
+        shouldComponentUpdate() 메서드가
+        true를 반환하면 render() 호출이되고,
+        false를 반환하면 render() 호출이 되지않는다.
+    */
+    shouldComponentUpdate(nextProps, nextState) {
+        return this.props.checked !== nextProps.checked;
+    }
+        
+
     render() {
         const { text, checked, id, myToggle, myRemove} = this.props;
         return (
