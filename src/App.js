@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import TodoListTemplate from './components/TodoListTemplate';
+import './components/Form.css';
+import Form from './components/Form';
+import TodoItemList from './components/TodoItemList';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div>
+        {/* TodoListTemplate.js 호출 */}
+        <TodoListTemplate form={<Form />}>
+          <TodoItemList />
+        </TodoListTemplate>
+      </div>
+    );
+  }
 }
 
 export default App;
