@@ -27,14 +27,17 @@ class App extends Component {
 
   handleCreate = () => {
     const { todo, todos } = this.state;
+    const todoObj = {
+      id: this.id++,
+      text: todo,
+      checked: false
+    };
+
     this.setState({
       todo: '', // todo 초기화
       // concat 을 사용하여 배열에 추가
-      todos: todos.concat({
-        id: this.id++,
-        text: todo,
-        checked: false
-      })
+      //todos: todos.concat()
+      todos: [...todos, todoObj]
     });
   }
 
