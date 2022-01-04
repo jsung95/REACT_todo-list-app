@@ -37,6 +37,8 @@ class App extends Component {
       todo: '', // todo 초기화
       // concat 을 사용하여 배열에 추가
       //todos: todos.concat()
+
+      // ...(spread operator)을 사용하여 todo 객체를 배열에 추가
       todos: [...todos, todoObj]
     });
   }
