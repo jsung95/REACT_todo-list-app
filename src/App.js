@@ -50,22 +50,38 @@ class App extends Component {
     }
   }
 
-
-
-    render() {
-
-      const {todo, todos} = this.state;
-      const {handleChange, handleCreate, handleKeyPress} = this;
-      
-      return (
-        <div>
-          {/* TodoListTemplate.js 호출 */}
-          <TodoListTemplate form={<Form todo={todo} myChange={handleChange} myCreate={handleCreate} myKeyPress={handleKeyPress}/>}>
-            <TodoItemList todos={todos}/>
-          </TodoListTemplate>
-        </div>
-      );
-    }
+  handleRemove = (id) => {
+    const { todos } = this.state;
+    this.setState({
+      todos: todos.filter(todo => todo.id !== id)
+    });
   }
+
+  handleToggle = (id) => {
+    const { todos } = this.state;
+    this.setState({
+      todos: todos.map(todo => todo.id === id ? {...todo, checked: !todo.checked} : todo)
+    });
+  }
+
+
+
+  render() {
+
+    const { todo, todos } = this.state;
+    const { handleChange, handleCreate, handleKeyPress, handleRemove, handleToggle } = this;
+
+    return (
+      <div>
+        {/* TodoListTemplate.js 호출 */}
+        <TodoListTemplate form={<Form todo={todo} myChange={handleChange} 
+                                                  myCreate={handleCreate} 
+                                                  myKeyPress={handleKeyPress} />}>
+          <TodoItemList todos={todos} myRemove={handleRemove} myToggle={handleToggle}/>
+        </TodoListTemplate>
+      </div>
+    );
+  }
+}
 
 export default App;
